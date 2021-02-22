@@ -1,12 +1,9 @@
 import React from 'react';
-import { useHistory, useRouteMatch } from 'react-router-dom';
 
 export default function MovieCard (props) {
-  const { title, director, metascore, id, stars } = props.movie;
-  const history = useHistory();
-  const { url } = useRouteMatch();
+  const { title, director, metascore, stars } = props.movie;
   return (
-    <div className="save-wrapper" onClick={() => history.push(`${url}movies/${id}`)}>
+    <div className="save-wrapper" onClick={props.onClick}>
       <div className="movie-card">
         <h2>{title}</h2>
         <div className="movie-director">
