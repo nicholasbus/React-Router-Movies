@@ -1,10 +1,11 @@
 import React from 'react';
 
 export default function MovieCard (props) {
-  const { title, director, metascore, stars } = props.movie;
+  const { title, director, metascore, stars, id } = props.movie;
+  const { addToSavedList } = props
   return (
-    <div className="save-wrapper" onClick={props.onClick}>
-      <div className="movie-card">
+    <div className="save-wrapper">
+      <div className="movie-card" onClick={props.onClick}>
         <h2>{title}</h2>
         <div className="movie-director">
           Director: <em>{director}</em>
@@ -20,7 +21,10 @@ export default function MovieCard (props) {
         }
         
       </div>
-      <div className="save-button">Save</div>
+      {
+        stars ? <div className="save-button" onClick={() => addToSavedList(id)}>Save</div> : null
+      }
+      
     </div>
   )
 }
